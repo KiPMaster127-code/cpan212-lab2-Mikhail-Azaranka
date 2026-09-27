@@ -2,7 +2,8 @@
 
 In this Lab, we have Express API that allows a person to have access to tools, filter them, update or delete them if we dont need them.
 
-Live: <!-- your Render address, for example https://cpan212-lab2-jane-doe.onrender.com/api/tools -->
+Live: https://cpan212-lab2-mikhail-azaranka.onrender.com/api/tools
+<!-- your Render address, for example https://cpan212-lab2-jane-doe.onrender.com/api/tools -->
 
 ## Run it
 
@@ -33,5 +34,4 @@ npm run check
 This tries every route and prints which checks pass.
 
 ## AI use
-
-<!-- List each AI tool you used and what you used it for, or write "No AI tools used." -->
+No AI was used to complete the lab

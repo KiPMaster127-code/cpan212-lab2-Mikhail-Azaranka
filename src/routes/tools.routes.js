@@ -26,6 +26,7 @@ toolsRouter.get('/', (req, res) => {
 
   const matching = tools.filter((tool) => tool.category === ___);
   res.json({ data: matching });
+  
 });
 
 // TODO (you): STEP 3. GET /api/tools/:id sends one tool.

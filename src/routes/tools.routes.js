@@ -17,8 +17,8 @@ toolsRouter.get('/', (req, res) => {
     return res.json({ data: tools });
   }
 
-  if (!CATEGORIES.includes(___)) {
-    return res.status(___).json({
+  if (!CATEGORIES.includes(category)) {
+    return res.status(400).json({
       error: {
         message: 'Invalid query',
         details: { category: 'category must be one of: power, hand, garden, cleaning' },
@@ -26,7 +26,7 @@ toolsRouter.get('/', (req, res) => {
     });
   }
 
-  const matching = tools.filter((tool) => tool.category === ___);
+  const matching = tools.filter((tool) => tool.category === category);
   res.json({ data: matching });
 
 });
@@ -46,8 +46,8 @@ toolsRouter.get('/:id', (req, res) => {
 // Step 5
 toolsRouter.post('/', validateTool, (req, res) => {
   const tool = { id: randomUUID(), ...req.body };
-  tools.___(tool);
-  res.status(___).json({ data: tool });
+  tools.push(tool);
+  res.status(201).json({ data: tool });
 });
 
 
@@ -59,7 +59,7 @@ toolsRouter.put('/:id', validateTool, (req, res) => {
     return res.status(404).json({ error: { message: 'Tool not found' } });
   }
 
-  Object.assign(tool, ___);
+  Object.assign(tool, req.body);
   res.json({ data: tool });
 });
 
@@ -68,10 +68,10 @@ toolsRouter.put('/:id', validateTool, (req, res) => {
 toolsRouter.delete('/:id', (req, res) => {
   const index = tools.findIndex((tool) => tool.id === req.params.id);
 
-  if (index === ___) {
+  if (index === -1) {
     return res.status(404).json({ error: { message: 'Tool not found' } });
   }
 
   tools.splice(index, 1);
-  res.status(___).end();
+  res.status(204).end();
 });

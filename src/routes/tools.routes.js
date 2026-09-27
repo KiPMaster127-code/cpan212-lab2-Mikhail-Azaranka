@@ -8,6 +8,8 @@ import { validateTool } from '../middleware/validate-tool.js';
 export const toolsRouter = Router();
 
 // GET /api/tools sends every tool. This route already works.
+
+//Step 2
 toolsRouter.get('/', (req, res) => {
   const category = req.query.category;
 
@@ -26,10 +28,20 @@ toolsRouter.get('/', (req, res) => {
 
   const matching = tools.filter((tool) => tool.category === ___);
   res.json({ data: matching });
-  
+
 });
 
-// TODO (you): STEP 3. GET /api/tools/:id sends one tool.
+// Step 3
+toolsRouter.get('/:id', (req, res) => {
+  const tool = tools.find((tool) => tool.id === req.params.id);
+
+  if (!tool) {
+    return res.status(404).json({ error: { message: 'Tool not found' } });
+  }
+
+  res.json({ data: tool });
+});
+
 
 // TODO (you): STEP 5. POST /api/tools adds a tool.
 
